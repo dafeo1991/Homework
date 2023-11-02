@@ -1,0 +1,57 @@
+import os
+
+
+def new_note():
+    name = input("Напишите название заметки: ")
+    information = input("О чем будет ваша заметка? ")
+
+    
+    with open(f"{name}.csv", "w") as file_note:
+        file_note.write(information)
+        print()
+    print("Заметка добавлена в файл")
+    print()
+
+def view_notes():
+    files = os.listdir() 
+
+   
+    for file_note in files:
+        if file_note.endswith(".csv"):
+            with open(file_note, "r") as note:
+                print(f"--title: новая заметка {file_note} ---")
+                print(f"–msg: тело новой заметки {note.read()}")
+                print()
+
+
+def delete_note():
+    name = input("Для удаления заметки напишите ее имя: ")
+
+    
+    if os.path.isfile(f"{name}.csv"):
+        os.remove(f"{name}.csv")
+        print("Мы удалили заметку!")
+    else:
+        print("Такой заметки не существует.")
+
+
+while True:
+    print()
+    print("1. Создание заметки")
+    print("2. Напечатать список заметок")
+    print("3. Удаляем не нужную заметку")
+    print("4. Выход из программы")
+    print()
+
+    num = input("Выберите действие: ")
+    print()
+
+    if num == "1":
+        new_note()
+    elif num == "2":
+        view_notes()
+    elif num == "3":
+        delete_note()
+    elif num == "4":
+        break  
+    
