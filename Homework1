@@ -43,8 +43,8 @@ while True:
     print("4. Выход из программы")
     print()
 
-    num = input("Выберите действие: ")
-    print()
+    num = input()
+    
 
     if num == "1":
         new_note()
